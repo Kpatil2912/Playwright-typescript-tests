@@ -1,4 +1,4 @@
-# Playwright Automation Practice
+# Playwright Automation 
 
 This repository is a collection of automation tests built using [Playwright](https://playwright.dev/). It's designed to help practice and demonstrate end-to-end testing, UI validation, API testing, and integration with modern DevOps pipelines.
 
@@ -6,10 +6,10 @@ This repository is a collection of automation tests built using [Playwright](htt
 
 - [Playwright](https://playwright.dev/) (TypeScript)
 - Node.js
-- Allure Reporter
-- Jest / Playwright Test Runner
+- Playwright Reporter
+- Playwright Test Runner
 - CI/CD Integration (e.g., GitHub Actions, Azure DevOps, Jenkins)
-- REST API Testing (via Playwright request or Axios)
+- REST API Testing (via Playwright request and Axios)
 
 ## 📁 Project Structure
 
