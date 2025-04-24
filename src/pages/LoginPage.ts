@@ -15,7 +15,7 @@ export default class LoginPage {
     this.submitButton = page.locator('button[type="submit"]');
   }
   async navigateToLoginPage() : Promise<LoginPage> {
-    const baseUrl = process.env.BASE_URL; // Replace with your default URL
+    const baseUrl = process.env.BASE_URL || " "; // Replace with your default URL
     await this.page.goto(baseUrl); // Replace with your actual login URL
     return this;
    } // Replace with your actual login URL
