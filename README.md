@@ -1,4 +1,4 @@
-# 🎭 Playwright Automation Practice
+# 🎭 Playwright Automation 
 
 A personal practice repository to build and refine end-to-end automation skills using [Playwright](https://playwright.dev/). This project includes UI testing, API interactions, cross-browser testing, and integration with CI/CD pipelines using Playwright's built-in reporting.
 
