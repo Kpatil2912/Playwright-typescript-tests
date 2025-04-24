@@ -16,23 +16,31 @@ A personal practice repository to build and refine end-to-end automation skills 
 
 ## 📁 Folder Structure (Industry Standard)
 
-```
-├── tests/                        # Test specifications
-│   ├── ui/                      # UI test cases
-│   └── api/                     # API test cases
-├── pages/                       # Page Object Models (POM)
-├── fixtures/                    # Custom test fixtures
-├── utils/                       # Utility functions (e.g., API clients, helpers)
-├── config/                      # Test data and configuration files
-│   └── test-data.json           # Sample test data
-├── reports/                     # Custom or archived test reports
-├── test-results/                # Test execution output
-├── playwright-report/           # Playwright HTML report
-├── .github/workflows/           # GitHub Actions workflows for CI
+```ini
+├── .github/                     # GitHub Actions workflows
+├── Archive/                     # Archive or backup files
+├── node_modules/                # Node.js dependencies
+├── playwright-report/           # Playwright HTML report output
+├── src/                         # Source code folder
+│   ├── config/                  # Configuration files
+│   │   └── env/                 # Environment specific configs
+│   ├── dao/                     # Data access objects or interfaces
+│   ├── data/                    # Static test data
+│   ├── fixtures/                # Custom test fixtures
+│   ├── pages/                   # Page Object Models (e.g., LoginPage.ts)
+│   ├── reports/                 # Custom or manual test reports
+│   ├── tests/                   # Test cases
+│   ├── types/                   # TypeScript types and interfaces
+│   ├── utils/                   # Utility functions
+│   └── verifications/           # Custom assertions or verification helpers
+├── test-results/                # Playwright test results output
+├── .gitignore                   # Files and folders to ignore in Git
+├── LICENSE                      # Project license
+├── package-lock.json            # Exact versions of dependencies
+├── package.json                 # NPM scripts and dependencies
 ├── playwright.config.ts         # Playwright configuration
-├── global-setup.ts              # Global setup file (if needed)
-├── global-teardown.ts           # Global teardown file (if needed)
-└── README.md
+├── README.md                    # Project readme
+├── tsconfig.json                # TypeScript configuration
 ```
 
 ---
@@ -44,24 +52,28 @@ A personal practice repository to build and refine end-to-end automation skills 
 ```bash
 git clone https://github.com/your-username/playwright-automation-practice.git
 cd playwright-automation-practice
+
 ```
 
 ### 2. Install Dependencies
 
 ```bash
 npm install
+
 ```
 
 ### 3. Run Tests
 
 ```bash
 npx playwright test
+
 ```
 
 ### 4. View Playwright HTML Report
 
 ```bash
 npx playwright show-report
+
 ```
 
 ---
@@ -69,6 +81,7 @@ npx playwright show-report
 ## 🔄 Continuous Integration
 
 This project is compatible with:
+
 - ✅ GitHub Actions
 - ✅ Azure DevOps Pipelines
 - ✅ Jenkins
