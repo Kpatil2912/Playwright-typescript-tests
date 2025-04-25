@@ -14,7 +14,7 @@ A personal practice repository to build and refine end-to-end automation skills 
 
 ---
 
-## 📁 Folder Structure (Industry Standard)
+## 📁 Folder Structure 
 
 ```ini
 ├── .github/                     # GitHub Actions workflows
@@ -24,7 +24,7 @@ A personal practice repository to build and refine end-to-end automation skills 
 ├── src/                         # Source code folder
 │   ├── config/                  # Configuration files
 │   │   └── env/                 # Environment specific configs
-│   ├── dao/                     # Data access objects or interfaces
+│   ├── dao/                     # Data access objects and interfaces
 │   ├── data/                    # Static test data
 │   ├── fixtures/                # Custom test fixtures
 │   ├── pages/                   # Page Object Models (e.g., LoginPage.ts)
