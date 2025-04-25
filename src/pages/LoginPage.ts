@@ -1,33 +1,49 @@
-import { Locator, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 import dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 export default class LoginPage {
-  private page: Page;
-
-  private usernameInput : Locator;
-  private passwordInput : Locator;
-  private submitButton: Locator; 
+  private readonly page: Page;
+  private readonly emailInput: Locator;
+  private readonly passwordInput: Locator;
+  private readonly signInButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.usernameInput = page.locator('input[name="username"]');
-    this.passwordInput = page.locator('input[name="password"]');
-    this.submitButton = page.locator('button[type="submit"]');
+    this.emailInput = page.getByRole('textbox', { name: 'Email' });
+    this.passwordInput = page.getByRole('textbox', { name: 'Password' });
+    this.signInButton = page.getByRole('button', { name: 'SIGN IN' });
   }
-  async navigateToLoginPage() : Promise<LoginPage> {
-    const baseUrl = process.env.BASE_URL; // Replace with your default URL
-    await this.page.goto(baseUrl); // Replace with your actual login URL
-    return this;
-   } // Replace with your actual login URL
 
-  async login(username: string, password: string) : Promise<LoginPage> {
-    await this.usernameInput.fill( username);
+  async openLoginPage(): Promise<LoginPage> {
+    await this.navigateTo('/account/login', 'networkidle');
+    return this;
+  }
+
+  async login(email: string, password: string): Promise<void> {
+    await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
-    await this.submitButton.click();
-    return this;
-  }
-  async isLoginSuccessful() : Promise<boolean> {
-    return await this.page.locator('text=Welcome').isVisible();
+    await this.signInButton.click();
   }
 
+  async assertTextIsVisible(expectedText: string): Promise<void> {
+    const textElement = this.page.getByText(expectedText, { exact: true });
+    await expect(textElement).toBeVisible();
+  }
+
+  async assertLoginSuccess(expectedUserName: string): Promise<void> {
+    await this.navigateTo('/account', 'networkidle');
+    await expect(this.page).toHaveURL(/.*account/);
+    await this.assertTextIsVisible(expectedUserName);
+  }
+
+  private async navigateTo(
+    urlPath: string,
+    loadState: 'networkidle' | 'load' | 'domcontentloaded' = 'load'
+  ): Promise<void> {
+    await this.page.waitForLoadState(loadState);
+    await this.page.goto(urlPath);
+  }
 }
