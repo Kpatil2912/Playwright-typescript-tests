@@ -5,8 +5,6 @@ test('Login with valid credentials', async ({ page }) => {
 
   const loginPage = new LoginPage(page);
 
-  await loginPage.navigateToLoginPage();
-  await loginPage.login('validUser', 'validPass');
-  await loginPage.isLoginSuccessful();
-  
+  await (await loginPage.navigateToLoginPage()).login(process.env.USER_EMAIL as string  , process.env.PASSWORD as string );
+  await loginPage.verifyLoginSuccess(process.env.USER_NAME as string );
 });
