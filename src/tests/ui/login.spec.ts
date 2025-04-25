@@ -1,10 +1,20 @@
 import { test, expect } from '@playwright/test';
 import LoginPage from '../../pages/LoginPage';
 
-test('Login with valid credentials', async ({ page }) => {
+test.describe('@Login Tests', () => {
+  test('should log in with valid credentials', async ({ page }) => {
+    const loginPage = new LoginPage(page);
 
-  const loginPage = new LoginPage(page);
+    const userEmail = process.env.USER_EMAIL;
+    const password = process.env.PASSWORD;
+    const userName = process.env.USER_NAME;
 
-  await (await loginPage.navigateToLoginPage()).login(process.env.USER_EMAIL as string  , process.env.PASSWORD as string );
-  await loginPage.verifyLoginSuccess(process.env.USER_NAME as string );
+    if (!userEmail || !password || !userName) {
+      throw new Error('Environment variables USER_EMAIL, PASSWORD, or USER_NAME are not set.');
+    }
+
+    await loginPage.openLoginPage();
+    await loginPage.login(userEmail, password);
+    await loginPage.assertLoginSuccess(userName);
+  });
 });
