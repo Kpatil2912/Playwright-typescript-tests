@@ -1,25 +1,29 @@
 import { expect, Locator, Page } from '@playwright/test';
-import dotenv from 'dotenv';
-import path from 'path';
+import { homePage } from './homePage';
+import basePage from './basePage';
 
-dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-export default class LoginPage {
-  private readonly page: Page;
+export default class LoginPage extends basePage {
   private readonly emailInput: Locator;
   private readonly passwordInput: Locator;
   private readonly signInButton: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page)
     this.emailInput = page.getByRole('textbox', { name: 'Email' });
     this.passwordInput = page.getByRole('textbox', { name: 'Password' });
     this.signInButton = page.getByRole('button', { name: 'SIGN IN' });
   }
 
   async openLoginPage(): Promise<LoginPage> {
-    await this.navigateTo('/account/login', 'networkidle');
+    await this.navigateToUrl('/account/login');
     return this;
+  }
+
+  async navigateToHomePage () : Promise<homePage> {
+    await this.navigateToUrl('/');
+    return new homePage(this.page);
+   
   }
 
   async login(email: string, password: string): Promise<void> {
@@ -34,16 +38,8 @@ export default class LoginPage {
   }
 
   async assertLoginSuccess(expectedUserName: string): Promise<void> {
-    await this.navigateTo('/account', 'networkidle');
+    await this.navigateToUrl('/account');
     await expect(this.page).toHaveURL(/.*account/);
     await this.assertTextIsVisible(expectedUserName);
-  }
-
-  private async navigateTo(
-    urlPath: string,
-    loadState: 'networkidle' | 'load' | 'domcontentloaded' = 'load'
-  ): Promise<void> {
-    await this.page.waitForLoadState(loadState);
-    await this.page.goto(urlPath);
   }
 }
