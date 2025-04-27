@@ -21,6 +21,7 @@ export class productPage extends basePage {
     }
 
     async selectProductSize (size : string): Promise<productPage>{
+
         const sizeLocator = this.page.getByRole('link', { name: size, exact: true });
         await this.waitForLoadAndClick(sizeLocator);
         let parentLiLocator = sizeLocator.locator(this.parentLi);
