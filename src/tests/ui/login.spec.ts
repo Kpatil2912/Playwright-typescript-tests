@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import LoginPage from '../../pages/loginPage';
  
 test.describe('Shopping Website - End-to-End Tests', () => {
-  test('@smoke Verify end-to-end test for shopping site overall user flow', async ({ page }) => {
+  test('@e2e Verify end-to-end test for shopping site overall user flow', async ({ page }) => {
     
     // Initialize the LoginPage object
     const loginPage = new LoginPage(page);

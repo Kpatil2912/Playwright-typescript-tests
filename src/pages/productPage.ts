@@ -3,16 +3,14 @@ import { Locator, Page } from "playwright";
 import { cartPage } from "./cartPage";
 import basePage from "./basePage";
 
-export default class productPage extends basePage {
+export class productPage extends basePage {
 
     private readonly btnAddToCart : Locator ;
     private readonly parentLi :string ;
-    private readonly waitForloadState : "networkidle" | "load" | "domcontentloaded";
-    private readonly waitForstate : "visible" | "attached" | "detached" | "hidden" | undefined;
+    protected  waitForloadState : "networkidle" | "load" | "domcontentloaded";
+    protected  waitForstate : "visible" | "attached" | "detached" | "hidden" | undefined;
     private readonly fillQuantity : Locator ;
     private readonly viewCart : Locator ;
-
-
 
     constructor(page : Page) {
         super(page);
@@ -27,13 +25,17 @@ export default class productPage extends basePage {
     }
 
     async selectProductSize (size : string): Promise<productPage>{
+
         const sizeLocator = this.page.getByRole('link', { name: size, exact: true });
-        await this.page.waitForLoadState(this.waitForloadState);
-        await sizeLocator.click();
-        await sizeLocator.locator(this.parentLi).waitFor({state : this.waitForstate});
+        await this.waitForLoadAndClick(sizeLocator);
 
-
+        let parentLiLocator = sizeLocator.locator(this.parentLi);
+        await this.waitForLocatorState(parentLiLocator);
         return this ;
+
+        async function waitForLocatorState() {
+            await sizeLocator.locator(this.parentLi).waitFor({ state: this.waitForstate });
+        }
     }
     async selectProductColor (color : string): Promise<productPage>{
         const colorLocator = this.page.getByRole('link', { name: color});

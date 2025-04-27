@@ -3,7 +3,7 @@ import { homePage } from './homePage';
 import basePage from './basePage';
 
 
-export default class LoginPage extends basePage {
+export default class loginPage extends basePage {
   private readonly emailInput: Locator;
   private readonly passwordInput: Locator;
   private readonly signInButton: Locator;
@@ -15,7 +15,7 @@ export default class LoginPage extends basePage {
     this.signInButton = page.getByRole('button', { name: 'SIGN IN' });
   }
 
-  async openLoginPage(): Promise<LoginPage> {
+  async openLoginPage(): Promise<loginPage> {
     await this.navigateToUrl('/account/login');
     return this;
   }

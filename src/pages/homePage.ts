@@ -1,6 +1,6 @@
 import { time } from "console";
 import { Locator, Page } from "playwright";
-import productPage from "./productPage";
+import { productPage } from "./productPage";
 import { promises } from "dns";
 import basePage from "./basePage";
 
