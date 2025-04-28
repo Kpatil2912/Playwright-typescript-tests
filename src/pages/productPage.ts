@@ -1,8 +1,6 @@
-import { promises } from "dns";
 import { Locator, Page } from "playwright";
 import { cartPage } from "./cartPage";
 import basePage from "./basePage";
-
 export class productPage extends basePage {
 
     private readonly btnAddToCart : Locator ;
@@ -14,25 +12,20 @@ export class productPage extends basePage {
 
     constructor(page : Page) {
         super(page);
-
         this.btnAddToCart = page.getByRole('button', { name: 'ADD TO CART' });
         this.parentLi =  "//parent::li[@class='selected']";
         this.waitForloadState = "networkidle";
         this.waitForstate = 'visible' ;
         this.fillQuantity = page.getByRole('textbox', { name: 'Qty' });
         this.viewCart = page.getByRole('link', { name: 'VIEW CART' })
-        
     }
 
     async selectProductSize (size : string): Promise<productPage>{
-
         const sizeLocator = this.page.getByRole('link', { name: size, exact: true });
         await this.waitForLoadAndClick(sizeLocator);
-
         let parentLiLocator = sizeLocator.locator(this.parentLi);
         await this.waitForLocatorState(parentLiLocator);
         return this ;
-
         async function waitForLocatorState() {
             await sizeLocator.locator(this.parentLi).waitFor({ state: this.waitForstate });
         }
@@ -56,7 +49,6 @@ export class productPage extends basePage {
         await this.fillQuantity.fill(qty);
         await this.clickAddToCArtBtn();
         return this ;
-
     }
 
     async viewCartClick() : Promise<cartPage>{

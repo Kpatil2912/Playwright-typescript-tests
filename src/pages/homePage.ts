@@ -1,10 +1,9 @@
-import { time } from "console";
 import { Locator, Page } from "playwright";
 import { productPage } from "./productPage";
-import { promises } from "dns";
 import basePage from "./basePage";
 
-export  class homePage extends basePage{
+export class homePage extends basePage{
+    
     constructor(page : Page){
         super(page);
     }
@@ -14,6 +13,5 @@ export  class homePage extends basePage{
         await this.page.waitForLoadState('networkidle');
         return new productPage(this.page)
     }
-
 }
 

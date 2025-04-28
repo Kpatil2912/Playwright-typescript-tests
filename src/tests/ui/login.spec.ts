@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import LoginPage from '../../pages/loginPage';
+import LoginPage from '../../pages/LoginPage';
  
 test.describe('Shopping Website - End-to-End Tests', () => {
   test('@e2e Verify end-to-end test for shopping site overall user flow', async ({ page }) => {

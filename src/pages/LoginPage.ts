@@ -2,7 +2,6 @@ import { expect, Locator, Page } from '@playwright/test';
 import { homePage } from './homePage';
 import basePage from './basePage';
 
-
 export default class loginPage extends basePage {
   private readonly emailInput: Locator;
   private readonly passwordInput: Locator;
@@ -23,7 +22,6 @@ export default class loginPage extends basePage {
   async navigateToHomePage () : Promise<homePage> {
     await this.navigateToUrl('/');
     return new homePage(this.page);
-   
   }
 
   async login(email: string, password: string): Promise<void> {
