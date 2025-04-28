@@ -26,8 +26,6 @@ test.describe('Shopping Website - End-to-End Tests', () => {
     let cartPage = await productPage.viewCartClick();
 
     //Cart Page
-    
-
   });
 });
 

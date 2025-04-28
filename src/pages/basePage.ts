@@ -11,7 +11,7 @@ export default class basePage{
     }
 
     async navigateToUrl(url: string): Promise<void> {
-        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForLoadState(this.baseWaitForloadState);
         await this.page.goto(url);
     }
 
