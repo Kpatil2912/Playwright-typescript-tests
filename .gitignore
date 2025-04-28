@@ -1,10 +1,11 @@
 
 # Playwright
-node_modules/
 /test-results/
 /playwright-report/
 /blob-report/
-
+playwright/.cache/
+screenshots/
+videos/
 
 # Node.js
 node_modules/
@@ -12,13 +13,6 @@ npm-debug.log
 yarn-error.log
 package-lock.json
 yarn.lock
-
-# Playwright-specific
-playwright-report/
-test-results/
-playwright/.cache/
-screenshots/
-videos/
 
 # TypeScript
 dist/
