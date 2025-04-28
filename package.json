@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "A personal practice repository to build and refine end-to-end automation skills using [Playwright](https://playwright.dev/). This project includes UI testing, API interactions, cross-browser testing, and integration with CI/CD pipelines using Playwright's built-in reporting.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "clean" :"rimraf playwright-report test-results",
+    "test" : "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,6 +14,7 @@
     "@types/node": "^22.14.1",
     "dotenv": "^16.5.0",
     "playwright": "^1.52.0",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },

@@ -20,7 +20,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 1 : 1,
+//  / retries: process.env.CI ? 1 : 2,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -29,14 +29,16 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-      baseURL : process.env.HOME_URL as string, // Replace with your default URL,
+      baseURL : process.env.BASE_URL as string, // Replace with your default URL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
     video : 'retain-on-failure',
     screenshot : 'on',
-    headless : true,
+    headless: true,
+    // retry: 1, // Removed as it is not a valid property in the 'use' object
+    /* Maximum time each action can take. Defaults to 0 (no limit). */
   },
-
+ 
   /* Configure projects for major browsers */
   projects: [
     {
@@ -61,7 +63,7 @@ export default defineConfig({
     // },
     // {
     //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
+    //   use: { ...devices['iPhone 14'] },
     // },
 
     /* Test against branded browsers. */
