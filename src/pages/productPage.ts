@@ -39,7 +39,7 @@ export class productPage extends basePage {
     }
     
     async clickAddToCArtBtn () : Promise<productPage>{
-        await this.btnAddToCart.click();
+        await this.waitForLoadAndClick(this.btnAddToCart);
         return this ;
     }
     
