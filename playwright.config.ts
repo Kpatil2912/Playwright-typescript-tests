@@ -35,8 +35,6 @@ export default defineConfig({
     video : 'retain-on-failure',
     screenshot : 'on',
     headless: true,
-    // retry: 1, // Removed as it is not a valid property in the 'use' object
-    /* Maximum time each action can take. Defaults to 0 (no limit). */
   },
  
   /* Configure projects for major browsers */
