@@ -35,7 +35,7 @@ git add .
 git commit -m "your meaningful commit message"
 ```
 
-*(Don't worry about too many commits — we'll squash later.)*
+_(Don't worry about too many commits — we'll squash later.)_
 
 ---
 
@@ -74,7 +74,7 @@ After rebasing and resolving any conflicts:
 git push origin feature/your-ticket-id-short-description
 ```
 
-*(If you get an error after rebasing: `git push --force` is needed because rebase rewrites history.)*
+_(If you get an error after rebasing: `git push --force` is needed because rebase rewrites history.)_
 
 ```bash
 git push --force
@@ -149,17 +149,17 @@ git push origin --delete feature/your-ticket-id-short-description
 
 # 📋 Quick Commands Cheat Sheet
 
-| Action | Command |
-|:---|:---|
-| Update local main | `git checkout main && git pull origin main` |
-| Create new branch | `git checkout -b feature/branch-name` |
-| Rebase with main | `git fetch origin && git rebase origin/main` |
-| Continue after conflict | `git add . && git rebase --continue` |
-| Abort rebase | `git rebase --abort` |
-| Push branch | `git push origin feature/branch-name` |
-| Force push after rebase | `git push --force` |
-| Delete local branch | `git branch -d feature/branch-name` |
-| Delete remote branch | `git push origin --delete feature/branch-name` |
+| Action                  | Command                                        |
+| :---------------------- | :--------------------------------------------- |
+| Update local main       | `git checkout main && git pull origin main`    |
+| Create new branch       | `git checkout -b feature/branch-name`          |
+| Rebase with main        | `git fetch origin && git rebase origin/main`   |
+| Continue after conflict | `git add . && git rebase --continue`           |
+| Abort rebase            | `git rebase --abort`                           |
+| Push branch             | `git push origin feature/branch-name`          |
+| Force push after rebase | `git push --force`                             |
+| Delete local branch     | `git branch -d feature/branch-name`            |
+| Delete remote branch    | `git push origin --delete feature/branch-name` |
 
 ---
 

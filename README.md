@@ -1,4 +1,4 @@
-# 🎭 Playwright Automation 
+# 🎭 Playwright Automation
 
 A personal practice repository to build and refine end-to-end automation skills using [Playwright](https://playwright.dev/). This project includes UI testing, API interactions, cross-browser testing, and integration with CI/CD pipelines using Playwright's built-in reporting.
 
@@ -14,7 +14,7 @@ A personal practice repository to build and refine end-to-end automation skills 
 
 ---
 
-## 📁 Folder Structure 
+## 📁 Folder Structure
 
 ```ini
 ├── .github/                     # GitHub Actions workflows
@@ -100,6 +100,54 @@ Sample CI workflows can be added under `.github/workflows/`.
 - Custom fixtures and setup scripts
 - Test tagging and selective runs
 
+## 🧹 Code Quality: ESLint & Prettier
+
+### ESLint
+[ESLint](https://eslint.org/) is used to analyze code for potential errors, enforce coding standards, and maintain code quality throughout the project.
+
+**Useful ESLint Commands:**
+
+```bash
+# Check for linting errors in the project
+npx eslint .
+
+# Automatically fix fixable issues
+npx eslint . --fix
+
+# Check a specific file
+npx eslint src/pages/homePage.ts
+```
+
+### Prettier
+[Prettier](https://prettier.io/) is an opinionated code formatter that ensures consistent code style across the codebase.
+
+**Useful Prettier Commands:**
+
+```bash
+# Format all files in the project
+npx prettier --write .
+
+# Check formatting without making changes
+npx prettier --check .
+
+# Format a specific file
+npx prettier --write src/pages/homePage.ts
+
+# List files that are not formatted
+npx prettier --list-different .
+```
+
+Both tools are integrated to help keep your codebase clean, readable, and maintainable. You can also add scripts to your `package.json` for convenience:
+
+```json
+"scripts": {
+  "lint": "eslint .",
+  "lint:fix": "eslint . --fix",
+  "format": "prettier --write .",
+  "format:check": "prettier --check ."
+}
+```
+
 ---
 
 ## 🌱 Project Goals
@@ -122,4 +170,3 @@ This is a personal learning project, but feel free to fork it, use it, or sugges
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-

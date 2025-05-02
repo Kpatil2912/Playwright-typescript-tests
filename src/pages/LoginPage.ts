@@ -8,7 +8,7 @@ export default class loginPage extends basePage {
   private readonly signInButton: Locator;
 
   constructor(page: Page) {
-    super(page)
+    super(page);
     this.emailInput = page.getByRole('textbox', { name: 'Email' });
     this.passwordInput = page.getByRole('textbox', { name: 'Password' });
     this.signInButton = page.getByRole('button', { name: 'SIGN IN' });
@@ -19,7 +19,7 @@ export default class loginPage extends basePage {
     return this;
   }
 
-  async navigateToHomePage () : Promise<homePage> {
+  async navigateToHomePage(): Promise<homePage> {
     await this.navigateToUrl('/');
     return new homePage(this.page);
   }
