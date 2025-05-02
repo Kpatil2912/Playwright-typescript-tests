@@ -35,7 +35,10 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "eslint --fix",
+      "eslint --fix --format=stylish",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml,css,scss}": [
       "prettier --write"
     ]
   }
