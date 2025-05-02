@@ -103,6 +103,7 @@ Sample CI workflows can be added under `.github/workflows/`.
 ## 🧹 Code Quality: ESLint & Prettier
 
 ### ESLint
+
 [ESLint](https://eslint.org/) is used to analyze code for potential errors, enforce coding standards, and maintain code quality throughout the project.
 
 **Useful ESLint Commands:**
@@ -119,6 +120,7 @@ npx eslint src/pages/homePage.ts
 ```
 
 ### Prettier
+
 [Prettier](https://prettier.io/) is an opinionated code formatter that ensures consistent code style across the codebase.
 
 **Useful Prettier Commands:**

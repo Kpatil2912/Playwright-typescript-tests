@@ -22,7 +22,7 @@ test.describe('Shopping Website - End-to-End Tests', () => {
 
     //Product Page
     await productPage.selectProductDetailsAndAddToCart('L', 'Black', '4');
-    // const cartPage = await productPage.viewCartClick();
+    await productPage.viewCartClick();
 
     //Cart Page
   });
