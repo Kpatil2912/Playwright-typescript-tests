@@ -15,4 +15,12 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
   tseslint.configs.recommended,
-]);
+], {
+  ignores: [
+    'commitlint.config.js', // ignore config files
+    'node_modules',
+    'playwright-report',
+    'test-results',
+    'dist'
+  ]
+});

@@ -150,6 +150,65 @@ Both tools are integrated to help keep your codebase clean, readable, and mainta
 }
 ```
 
+## 🐶 Git Hooks: Husky & Commit Message Linting
+
+### Husky
+
+[Husky](https://typicode.github.io/husky/) is used to manage Git hooks, ensuring code quality checks (like linting and formatting) are run automatically before each commit or push.
+
+**Pre-commit Hook:**
+
+- Runs ESLint and Prettier (via lint-staged) on staged files before every commit.
+- Blocks commits if there are lint errors that cannot be auto-fixed.
+
+**Pre-push Hook (optional):**
+
+- You can add a pre-push hook to run tests before pushing code to remote.
+
+**Useful Husky Commands:**
+
+```bash
+# (Re)install Husky hooks
+npm run prepare
+
+# Manually run the pre-commit hook
+.husky/pre-commit
+```
+
+### Commitlint
+
+[Commitlint](https://commitlint.js.org/) enforces [Conventional Commits](https://www.conventionalcommits.org/) for commit messages, ensuring readable and consistent commit history.
+
+**Commit Message Examples:**
+
+- feat: add user login test
+- fix: correct typo in homepage
+- docs: update README
+- refactor: improve test structure
+- test: add e2e shopping cart test
+
+**Useful Commitlint Commands:**
+
+```bash
+# Manually check a commit message
+npx commitlint --edit <commit-msg-file>
+
+# Example (for last commit):
+npx commitlint --edit $(git log -1 --pretty=%H)
+```
+
+### Setup Steps (Summary)
+
+1. Install Husky, lint-staged, and commitlint:
+   ```bash
+   npm install --save-dev husky lint-staged @commitlint/{config-conventional,cli}
+   ```
+2. Add Husky hooks:
+   - Pre-commit: runs `npx lint-staged`
+   - Commit-msg: runs `npx --no-install commitlint --edit $1`
+3. Add `lint-staged` and `commitlint.config.js` to your project.
+4. Configure your `package.json` scripts and lint-staged section as shown above.
+
 ---
 
 ## 🌱 Project Goals
