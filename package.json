@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf playwright-report test-results",
-    "test": "npm run clean && npm run lint:fix && npm run format && npx playwright test --headed",
+    "test": "npm run clean && npm run lint:fix && npm run format && npx playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
