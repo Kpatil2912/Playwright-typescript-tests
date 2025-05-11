@@ -13,10 +13,11 @@ test.describe('Shopping Website - End-to-End Tests', () => {
     // Initialize the LoginPage object
     const loginPage = new LoginPage(page);
 
-    //Test data for the test case
+    //Test file path
     const __dir = path.join(process.cwd(), '/src/testData/e2eTestData.json');
-    const __testData = readJSONDataFortestCase(__dir, 'testData');
 
+    //Test data Setup
+    const __testData = readJSONDataFortestCase(__dir, 'testData');
     const productData: ProductDataController = __testData['ProductData'];
     const e2eProductDao: E2eProductDao = new E2eProductDao(productData);
 
