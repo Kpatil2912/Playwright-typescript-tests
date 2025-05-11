@@ -1,6 +1,8 @@
 import { Locator, Page } from 'playwright';
+import { test } from '@playwright/test';
 import { cartPage } from './cartPage';
 import basePage from './basePage';
+import E2eProductDao from '../daoLayer/inputDao/e2eProductDao';
 export class productPage extends basePage {
   private readonly btnAddToCart: Locator;
   private readonly parentLi: string;
@@ -42,21 +44,21 @@ export class productPage extends basePage {
     return this;
   }
 
-  async selectProductDetailsAndAddToCart(
-    size: string,
-    color: string,
-    qty: string
-  ): Promise<productPage> {
-    await this.selectProductSize(size);
-    await this.selectProductColor(color);
-    await this.fillQuantity.fill(qty);
-    await this.clickAddToCArtBtn();
+  async selectProductDetailsAndAddToCart(e2eProductDao: E2eProductDao): Promise<productPage> {
+    await test.step('Select Product Details And AddToCart ', async () => {
+      await this.selectProductSize(e2eProductDao.getProductSize());
+      await this.selectProductColor(e2eProductDao.getProductColor());
+      await this.fillQuantity.fill(e2eProductDao.getProductQuantity());
+      await this.clickAddToCArtBtn();
+    });
     return this;
   }
 
   async viewCartClick(): Promise<cartPage> {
-    await this.viewCart.click();
-    await this.page.waitForLoadState(this.waitForloadState);
+    await test.step('Click View Cart', async () => {
+      await this.viewCart.click();
+      await this.page.waitForLoadState(this.waitForloadState);
+    });
     return new cartPage(this.page);
   }
 }

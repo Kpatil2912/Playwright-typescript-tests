@@ -1,0 +1,10 @@
+{
+  "testData": {
+    "ProductData": {
+      "productName": "Nike react infinity run",
+      "productSize": "L",
+      "productColor": "Black",
+      "productQuantity": "6"
+    }
+  }
+}

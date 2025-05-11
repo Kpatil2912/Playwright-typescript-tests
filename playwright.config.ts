@@ -32,7 +32,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL as string, // Replace with your default URL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
-    video: 'retain-on-failure',
+    video: 'on',
     screenshot: 'on',
     headless: true,
     colorScheme: 'dark',
