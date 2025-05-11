@@ -4,21 +4,44 @@
   "description": "A personal practice repository to build and refine end-to-end automation skills using [Playwright](https://playwright.dev/). This project includes UI testing, API interactions, cross-browser testing, and integration with CI/CD pipelines using Playwright's built-in reporting.",
   "main": "index.js",
   "scripts": {
-    "clean" :"rimraf playwright-report test-results",
-    "test" : "npx playwright test"
+    "clean": "rimraf playwright-report test-results",
+    "test": "npm run clean && npm run lint:fix && npm run format && npx playwright test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^22.14.1",
-    "dotenv": "^16.5.0",
     "playwright": "^1.52.0",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.52.0"
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@eslint/js": "^9.25.1",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.17",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.25.1",
+    "eslint-plugin-playwright": "^2.2.0",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "typescript-eslint": "^8.31.1"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix --format=stylish",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml,css,scss}": [
+      "prettier --write"
+    ]
   }
 }

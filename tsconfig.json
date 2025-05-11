@@ -9,10 +9,5 @@
     "resolveJsonModule": true,
     "outDir": "./dist"
   },
-  "include": [
-    "Archive/tests/**/*.ts",
-    "pages/**/*.ts",
-    "utils/**/*.ts",
-    "config/**/*.ts"
-  ]
+  "include": ["Archive/tests/**/*.ts", "pages/**/*.ts", "utils/**/*.ts", "config/**/*.ts"]
 }
