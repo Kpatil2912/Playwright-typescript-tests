@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import LoginPage from '../../pages/loginPage';
+import LoginPage from '../../pages/LoginPage';
 import dotenv from 'dotenv';
 import E2eProductDao from '../../daoLayer/inputDao/e2eProductDao';
 import * as path from 'path';
