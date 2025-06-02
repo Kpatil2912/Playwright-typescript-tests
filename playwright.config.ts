@@ -14,6 +14,9 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  // globalSetup: require.resolve('./global-setup'),
+  // globalTeardown: require.resolve('./global-tearDown'),
+
   testDir: './src/tests/ui',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -29,20 +32,29 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    baseURL: process.env.BASE_URL as string, // Replace with your default URL,
+    baseURL: 'https://demo.evershop.io/', // Replace with your default URL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
     video: 'on',
     screenshot: 'on',
     headless: true,
     colorScheme: 'dark',
+    // storageState: 'storageState.json',
   },
 
   /* Configure projects for major browsers */
   projects: [
+    // {
+    //   name: 'setup',
+    //   testMatch: /.*auth-setup\.ts/,
+    //   use: {
+    //     ...devices['Desktop Chrome'],
+    //   },
+    // },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      // dependencies: ['setup'],
     },
 
     // {
